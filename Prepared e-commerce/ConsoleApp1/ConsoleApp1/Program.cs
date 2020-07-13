@@ -1,24 +1,24 @@
 ﻿using System;
+using System.Dynamic;
+using System.Threading.Tasks.Dataflow;
 
 namespace ConsoleApp1
 {
-    
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("enter Number");
-            var input1 = Console.ReadLine();
-            var numberA = Convert.ToInt32(input1);
-            var input2 = Console.ReadLine();
-            var numberB = Convert.ToInt32(input2);
-             
-            var max=(numberA > numberB)?numberA: numberB;
-                        
-                Console.WriteLine("max"+ max);
+            Console.Write("Image width: ");
+            var width = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Image height: ");
+            var height = Convert.ToInt32(Console.ReadLine());
+
+            var orientation = width > height ? ImageOrientation.Landscape : ImageOrientation.Portrait;
+            Console.WriteLine("Image orientation is " + orientation);
         }
-           
-        }
+
+
     }
 
- 
+}
