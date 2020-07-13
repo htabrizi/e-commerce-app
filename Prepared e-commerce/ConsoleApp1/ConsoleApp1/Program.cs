@@ -2,20 +2,23 @@
 
 namespace ConsoleApp1
 {
+    
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("enter Number");
-            var input = Console.ReadLine();
-            var number = Convert.ToInt32(input);
-            if (number >= 1 && number <= 10)
-            { Console.WriteLine("valid"); }
-            else
-            {
-                Console.WriteLine("invalid"); }
+            var input1 = Console.ReadLine();
+            var numberA = Convert.ToInt32(input1);
+            var input2 = Console.ReadLine();
+            var numberB = Convert.ToInt32(input2);
+             
+            var max=(numberA > numberB)?numberA: numberB;
+                        
+                Console.WriteLine("max"+ max);
+        }
            
         }
     }
-}
+
  
