@@ -10,19 +10,21 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var number = new Random().Next(1, 10);
-            
-            for (var i = 1; i <= 4; i++)
+            Console.WriteLine("enter series of number");
+            var input = Console.ReadLine();
+            var numbers = input.Split(',');
+
+            // Assume the first number is the max 
+            var max = Convert.ToInt32(numbers[0]);
+
+            foreach (var str in numbers)
             {
-                Console.Write("Guess the secret number:");
-                var guess = Convert.ToInt32(Console.ReadLine());
-                if( guess == number){ 
-                    Console.WriteLine("won");
-                    return;
-                }
-               
-            }Console.WriteLine("Secret is " + number);
-              Console.WriteLine("Lost"); 
+                var number = Convert.ToInt32(str);
+                if (number > max)
+                    max = number;
+            }
+
+            Console.WriteLine("Max is " + max);
+        }
         }
     }
-}
