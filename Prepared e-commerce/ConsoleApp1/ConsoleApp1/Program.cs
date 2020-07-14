@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Dynamic;
+using System.Threading;
 using System.Threading.Tasks.Dataflow;
 
 namespace ConsoleApp1
@@ -8,25 +9,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.Write("What is the speed limit? ");
-            var speedLimit = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("What is the speed of this car? ");
-            var carSpeed = Convert.ToInt32(Console.ReadLine());
-
-            if (carSpeed < speedLimit)
-                Console.WriteLine("Ok");
-            else
+            var count = 0;
+            for(var i=1; i<=100; i++)
             {
-                const int kmPerDemeritPoint = 5;
-                var demeritPoints = (carSpeed - speedLimit) / kmPerDemeritPoint;
-                if (demeritPoints > 12)
-                    Console.WriteLine("License Suspended");
-                else
-                    Console.WriteLine("Demerit points: " + demeritPoints);
+                if (i % 3 == 0)
+                {
+                    count++;
+
+                }
             }
-
-
+            Console.WriteLine("There are {0} numbers divisible by 3 between 1 and 100.", count);
         }
     }
 }
