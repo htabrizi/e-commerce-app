@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bKjywnmGrOXBT8CLSSTTlSSpI89vSTg2vIZTeS7jNQzxHLEl0lObdz61IayTVUeZNeY/pvB1rEbgVw59Z6/Glw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

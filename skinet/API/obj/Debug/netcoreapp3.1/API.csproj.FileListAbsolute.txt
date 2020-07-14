@@ -59,3 +59,7 @@ C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netc
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
+C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\API\bin\Debug\netcoreapp3.1\Core.pdb
