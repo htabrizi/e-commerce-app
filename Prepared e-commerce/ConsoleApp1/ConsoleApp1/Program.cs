@@ -10,15 +10,19 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var sum = 1;
-Console.Write("write number");
-                var number = Convert.ToDouble(Console.ReadLine());
-
-           for (var i = 1; i <= number; i++)
+            var number = new Random().Next(1, 10);
+            
+            for (var i = 1; i <= 4; i++)
             {
-                sum *= i;
-            }
-            Console.WriteLine("{0}!={1}",number,sum);
+                Console.Write("Guess the secret number:");
+                var guess = Convert.ToInt32(Console.ReadLine());
+                if( guess == number){ 
+                    Console.WriteLine("won");
+                    return;
+                }
+               
+            }Console.WriteLine("Secret is " + number);
+              Console.WriteLine("Lost"); 
         }
     }
 }
