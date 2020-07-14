@@ -10,19 +10,15 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var sum = 0;
+            var sum = 1;
+Console.Write("write number");
+                var number = Convert.ToDouble(Console.ReadLine());
 
-            while (true)
+           for (var i = 1; i <= number; i++)
             {
-                Console.Write("write 2 number");
-                var input = Console.ReadLine();
-                if (input.ToLower() == "ok")
-                {
-                    break;
-                }
-                sum += Convert.ToInt32(input);
+                sum *= i;
             }
-            Console.WriteLine(sum);
+            Console.WriteLine("{0}!={1}",number,sum);
         }
     }
 }
