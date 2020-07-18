@@ -36,6 +36,6 @@ host.Run();
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }); //test
     }
 }
