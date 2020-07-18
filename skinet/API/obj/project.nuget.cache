@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7x7w60mzbWKZhKB7K80wNz0oYV9HjtGmJKFNEgMfmKt9Zgvy4qSBuWgjEnBqAcOnq81uIejwz33KmlN173bu/g==",
+  "dgSpecHash": "1vItgq+5baBNJle4KTukgFBUZugtByHNziieirtHJ/qMLU8UIZfwY+bGh94gR41G7Bw7Ukclp5nein6sbIaFUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

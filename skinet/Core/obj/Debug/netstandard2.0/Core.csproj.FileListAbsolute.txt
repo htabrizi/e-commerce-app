@@ -6,3 +6,4 @@ C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\core\obj\Debug\net
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\core\obj\Debug\netstandard2.0\Core.AssemblyInfo.cs
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\core\obj\Debug\netstandard2.0\Core.dll
 C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\core\obj\Debug\netstandard2.0\Core.pdb
+C:\Users\Hamid-Tabrizi\Documents\GitHub\e-commerce-app\skinet\core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache

@@ -1,0 +1,150 @@
+[33mcommit 638c8f9b4b78dfea5067c2eaea47c34944056b0a[m
+Author: Hamid-Tabrizi <h.tabrizi@orbs.ir>
+Date:   Thu Jul 16 19:09:14 2020 +0430
+
+    27 Applying the migrations and creating the Database at app startup
+
+[1mdiff --git a/skinet/.vscode/settings.json b/skinet/.vscode/settings.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9ff8d37[m
+[1m--- /dev/null[m
+[1m+++ b/skinet/.vscode/settings.json[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m    "files.exclude": {[m
+[32m+[m[32m        "**/bin": true,[m
+[32m+[m[32m        "**/obj": true[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/skinet/API/Program.cs b/skinet/API/Program.cs[m
+[1mindex 0f618b9..3d82833 100644[m
+[1m--- a/skinet/API/Program.cs[m
+[1m+++ b/skinet/API/Program.cs[m
+[36m@@ -1,9 +1,9 @@[m
+ using System;[m
+[31m-using System.Collections.Generic;[m
+[31m-using System.Linq;[m
+ using System.Threading.Tasks;[m
+[32m+[m[32musing Infrastructure.Data;[m
+ using Microsoft.AspNetCore.Hosting;[m
+[31m-using Microsoft.Extensions.Configuration;[m
+[32m+[m[32musing Microsoft.EntityFrameworkCore;[m
+[32m+[m[32musing Microsoft.Extensions.DependencyInjection;[m
+ using Microsoft.Extensions.Hosting;[m
+ using Microsoft.Extensions.Logging;[m
+ [m
+[36m@@ -11,9 +11,23 @@[m [mnamespace API[m
+ {[m
+     public class Program[m
+     {[m
+[31m-        public static void Main(string[] args)[m
+[32m+[m[32m        public static async Task Main(string[] args)[m
+         {[m
+[31m-            CreateHostBuilder(args).Build().Run();[m
+[32m+[m[32m            var host = CreateHostBuilder(args).Build();[m
+[32m+[m[32m            using (var scope = host.Services.CreateScope())[m
+[32m+[m[32m            {[m
+[32m+[m[32m                var Services=scope.ServiceProvider;[m
+[32m+[m[32m                var loggerFactory = Services.GetRequiredService<ILoggerFactory>();[m
+[32m+[m[32m            try{[m
+[32m+[m[32m                var context=Services.GetRequiredService<StoreContext>();[m
+[32m+[m[32m                await context.Database.MigrateAsync();[m
+[32m+[m[32m            }[m
+[32m+[m[32m            catch (Exception ex){[m
+[32m+[m[32m                var logger=loggerFactory.CreateLogger<Program>();[m
+[32m+[m[32m                logger.LogError(ex ,"An error occured during migration");[m
+[32m+[m[32m            }[m
+[32m+[m[32m            }[m
+[32m+[m[32mhost.Run();[m
+         }[m
+ [m
+         public static IHostBuilder CreateHostBuilder(string[] args) =>[m
+[1mdiff --git a/skinet/API/bin/Debug/netcoreapp3.1/API.dll b/skinet/API/bin/Debug/netcoreapp3.1/API.dll[m
+[1mindex d0ea0be..1cb8329 100644[m
+Binary files a/skinet/API/bin/Debug/netcoreapp3.1/API.dll and b/skinet/API/bin/Debug/netcoreapp3.1/API.dll differ
+[1mdiff --git a/skinet/API/bin/Debug/netcoreapp3.1/API.pdb b/skinet/API/bin/Debug/netcoreapp3.1/API.pdb[m
+[1mindex 02f1d7f..7b40d7e 100644[m
+Binary files a/skinet/API/bin/Debug/netcoreapp3.1/API.pdb and b/skinet/API/bin/Debug/netcoreapp3.1/API.pdb differ
+[1mdiff --git a/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.dll b/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.dll[m
+[1mindex 6e64386..0874cf4 100644[m
+Binary files a/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.dll and b/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.dll differ
+[1mdiff --git a/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.pdb b/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.pdb[m
+[1mindex 9260e43..cdce44f 100644[m
+Binary files a/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.pdb and b/skinet/API/bin/Debug/netcoreapp3.1/Infrastructure.pdb differ
+[1mdiff --git a/skinet/API/obj/API.csproj.nuget.dgspec.json b/skinet/API/obj/API.csproj.nuget.dgspec.json[m
+[1mindex 3afd46b..2fb6f2f 100644[m
+[1m--- a/skinet/API/obj/API.csproj.nuget.dgspec.json[m
+[1m+++ b/skinet/API/obj/API.csproj.nuget.dgspec.json[m
+[36m@@ -1,17 +1,17 @@[m
+ {[m
+   "format": 1,[m
+   "restore": {[m
+[31m-    "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj": {}[m
+[32m+[m[32m    "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj": {}[m
+   },[m
+   "projects": {[m
+[31m-    "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj": {[m
+[32m+[m[32m    "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj": {[m
+       "version": "1.0.0",[m
+       "restore": {[m
+[31m-        "projectUniqueName": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj",[m
+[32m+[m[32m        "projectUniqueName": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj",[m
+         "projectName": "API",[m
+[31m-        "projectPath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj",[m
+[32m+[m[32m        "projectPath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj",[m
+         "packagesPath": "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\",[m
+[31m-        "outputPath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\obj\\",[m
+[32m+[m[32m        "outputPath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\obj\\",[m
+         "projectStyle": "PackageReference",[m
+         "configFilePaths": [[m
+           "C:\\Users\\Hamid-Tabrizi\\AppData\\Roaming\\NuGet\\NuGet.Config",[m
+[1mdiff --git a/skinet/API/obj/Debug/netcoreapp3.1/API.assets.cache b/skinet/API/obj/Debug/netcoreapp3.1/API.assets.cache[m
+[1mindex 1572e59..808bca9 100644[m
+Binary files a/skinet/API/obj/Debug/netcoreapp3.1/API.assets.cache and b/skinet/API/obj/Debug/netcoreapp3.1/API.assets.cache differ
+[1mdiff --git a/skinet/API/obj/Debug/netcoreapp3.1/API.csprojAssemblyReference.cache b/skinet/API/obj/Debug/netcoreapp3.1/API.csprojAssemblyReference.cache[m
+[1mindex 0f71d52..d23bbea 100644[m
+Binary files a/skinet/API/obj/Debug/netcoreapp3.1/API.csprojAssemblyReference.cache and b/skinet/API/obj/Debug/netcoreapp3.1/API.csprojAssemblyReference.cache differ
+[1mdiff --git a/skinet/API/obj/Debug/netcoreapp3.1/API.dll b/skinet/API/obj/Debug/netcoreapp3.1/API.dll[m
+[1mindex d0ea0be..1cb8329 100644[m
+Binary files a/skinet/API/obj/Debug/netcoreapp3.1/API.dll and b/skinet/API/obj/Debug/netcoreapp3.1/API.dll differ
+[1mdiff --git a/skinet/API/obj/Debug/netcoreapp3.1/API.pdb b/skinet/API/obj/Debug/netcoreapp3.1/API.pdb[m
+[1mindex 02f1d7f..7b40d7e 100644[m
+Binary files a/skinet/API/obj/Debug/netcoreapp3.1/API.pdb and b/skinet/API/obj/Debug/netcoreapp3.1/API.pdb differ
+[1mdiff --git a/skinet/API/obj/project.nuget.cache b/skinet/API/obj/project.nuget.cache[m
+[1mindex 36c8b61..1223096 100644[m
+[1m--- a/skinet/API/obj/project.nuget.cache[m
+[1m+++ b/skinet/API/obj/project.nuget.cache[m
+[36m@@ -1,8 +1,8 @@[m
+ {[m
+   "version": 2,[m
+[31m-  "dgSpecHash": "7x7w60mzbWKZhKB7K80wNz0oYV9HjtGmJKFNEgMfmKt9Zgvy4qSBuWgjEnBqAcOnq81uIejwz33KmlN173bu/g==",[m
+[32m+[m[32m  "dgSpecHash": "1vItgq+5baBNJle4KTukgFBUZugtByHNziieirtHJ/qMLU8UIZfwY+bGh94gR41G7Bw7Ukclp5nein6sbIaFUQ==",[m
+   "success": true,[m
+[31m-  "projectFilePath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\API\\API.csproj",[m
+[32m+[m[32m  "projectFilePath": "C:\\Users\\Hamid-Tabrizi\\Documents\\GitHub\\e-commerce-app\\skinet\\api\\API.csproj",[m
+   "expectedPackageFiles": [[m
+     "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",[m
+     "C:\\Users\\Hamid-Tabrizi\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",[m
+[1mdiff --git a/skinet/Core/obj/Debug/netstandard2.0/Core.csprojAssemblyReference.cache b/skinet/Core/obj/Debug/netstandard2.0/Core.csprojAssemblyReference.cache[m
+[1mindex d107c70..2debb6b 100644[m
+Binary files a/skinet/Core/obj/Debug/netstandard2.0/Core.csprojAssemblyReference.cache and b/skinet/Core/obj/Debug/netstandard2.0/Core.csprojAssemblyReference.cache differ
+[1mdiff --git a/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.dll b/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.dll[m
+[1mindex 6e64386..0874cf4 100644[m
+Binary files a/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.dll and b/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.dll differ
+[1mdiff --git a/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.pdb b/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.pdb[m
+[1mindex 9260e43..cdce44f 100644[m
+Binary files a/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.pdb and b/skinet/Infrastructure/bin/Debug/netstandard2.0/Infrastructure.pdb differ
+[1mdiff --git a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.csproj.CoreCompileInputs.cache b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.csproj.CoreCompileInputs.cache[m
+[1mindex 0abb734..639ef3d 100644[m
+[1m--- a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.csproj.CoreCompileInputs.cache[m
+[1m+++ b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.csproj.CoreCompileInputs.cache[m
+[36m@@ -1 +1 @@[m
+[31m-f88cc966572d7d350e17065b54fd71ac2fd43f50[m
+[32m+[m[32m35b66d33ef9d26d062617674ee88674ec7d9b0ac[m
+[1mdiff --git a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.dll b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.dll[m
+[1mindex 6e64386..0874cf4 100644[m
+Binary files a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.dll and b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.dll differ
+[1mdiff --git a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.pdb b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.pdb[m
+[1mindex 9260e43..cdce44f 100644[m
+Binary files a/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.pdb and b/skinet/Infrastructure/obj/Debug/netstandard2.0/Infrastructure.pdb differ
