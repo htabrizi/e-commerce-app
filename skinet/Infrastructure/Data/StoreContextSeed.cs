@@ -34,9 +34,10 @@ namespace Infrastructure.Data
                     foreach (var item in types)
                     {
                       context.ProductTypes.Add(item);
+                        
                     }
+                  
                     await context.SaveChangesAsync();
-                    
  
                 }
                 if (!context.Products.Any())
