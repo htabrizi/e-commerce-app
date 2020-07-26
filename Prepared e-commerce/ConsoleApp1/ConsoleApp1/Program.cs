@@ -16,10 +16,28 @@ namespace ConsoleApp1
             Console.WriteLine("Index 3: " + index);
 
             //Clear()
-            Array.Clear(numbers, 1, 4);
+            Array.Clear(numbers, 0, 2);
             Console.WriteLine("Efect of Clear()");
             foreach (var n in numbers) { Console.WriteLine(n); }
+            //copy()
+            int[] another = new int[3];
+            Array.Copy(numbers, another, 3);
+            foreach (var item in another)
+                Console.WriteLine(item);
 
+            //sort()
+            Array.Sort(numbers);
+            Console.WriteLine("effect sort");
+            foreach (var n in numbers)
+                Console.WriteLine(n);
+            //reverse
+            Array.Reverse(numbers);
+            Console.WriteLine("reverse");
+                foreach (var n in numbers)
+                Console.WriteLine(n);
+            
+
+             
         }
     }
 }
