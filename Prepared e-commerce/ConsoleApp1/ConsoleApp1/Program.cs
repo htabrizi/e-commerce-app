@@ -5,26 +5,15 @@ using System.Threading.Tasks.Dataflow;
 
 namespace ConsoleApp1
 {
-    partial class Program
+    class program
     {
+       
         static void Main(string[] args)
         {
-
-            Console.WriteLine("enter series of number");
-            var input = Console.ReadLine();
-            var numbers = input.Split(',');
-
-            // Assume the first number is the max 
-            var max = Convert.ToInt32(numbers[0]);
-
-            foreach (var str in numbers)
-            {
-                var number = Convert.ToInt32(str);
-                if (number > max)
-                    max = number;
-            }
-
-            Console.WriteLine("Max is " + max);
-        }
+            var numbers = new[] { 3, 5, 7, 9, 11, 2, 3, 5 };
+            Console.WriteLine("length: " + numbers.Length);
+            var index = Array.IndexOf(numbers, 3);
+            Console.WriteLine("Index 3: " + index);
         }
     }
+}
