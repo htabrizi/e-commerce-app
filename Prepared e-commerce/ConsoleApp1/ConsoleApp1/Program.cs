@@ -14,6 +14,12 @@ namespace ConsoleApp1
             Console.WriteLine("length: " + numbers.Length);
             var index = Array.IndexOf(numbers, 3);
             Console.WriteLine("Index 3: " + index);
+
+            //Clear()
+            Array.Clear(numbers, 1, 4);
+            Console.WriteLine("Efect of Clear()");
+            foreach (var n in numbers) { Console.WriteLine(n); }
+
         }
     }
 }
