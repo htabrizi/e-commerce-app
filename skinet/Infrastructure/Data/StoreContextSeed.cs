@@ -31,9 +31,9 @@ namespace Infrastructure.Data
  var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
                     var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
 
-                    foreach (var item3 in types)
+                    foreach (var item in types)
                     {
-                      context.ProductTypes.Add(item3);
+                      context.ProductTypes.Add(item);
                         
                     }
                   
