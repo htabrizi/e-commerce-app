@@ -13,23 +13,29 @@ namespace ConsoleApp1
         {
 
             var numbers = new List<int>();
-            while (numbers.Count < 5)
+            while (true)
             {
                 Console.WriteLine("Enter Number:");
-                var number = Convert.ToInt32(Console.ReadLine());
-                if (numbers.Contains(number))
-                {
-                    Console.WriteLine("you're previous entered" + number);
-                    continue;
-                }
-                numbers.Add(number);
+                var input = Console.ReadLine();
+                if (input.ToLower() == "quit")
+                    break;
+                numbers.Add(Convert.ToInt32(input));
             }
-            numbers.Sort();
+            var uniques = new List<int>();
             foreach (var number in numbers)
             {
-                Console.WriteLine(number);
+                if(!uniques.Contains(number))
+                    uniques.Add(number);
+
             }
 
+            Console.WriteLine("uniqe");
+            foreach (var unique in uniques)
+            {
+                Console.WriteLine(unique);
+            }
+
+            
         }
     }
 }
