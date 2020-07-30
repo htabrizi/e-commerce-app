@@ -11,27 +11,16 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            var names= new List<string>();
-            while (true)
-            {
-                Console.Write("Type a name (or hit ENTER to quit): ");
+            Console.WriteLine("your name?");
 
-                var input = Console.ReadLine();
-                if (String.IsNullOrWhiteSpace(input))
-                    break;
-              
-                //names.Add(input);
-            }
+            var name = Console.ReadLine();
+            var array=new char[name.Length];
+            for (var i = name.Length; i > 0; i--) 
+            array[name.Length - i] = name[i - 1];
+            var reversed = new string(array);
+            Console.WriteLine("reversed name:"+reversed);
 
-            if (names.Count > 2)
-                Console.WriteLine("{0}, {1} and {2} others like your post", names[0], names[1], names.Count - 2);
-            else if (names.Count == 2)
-                Console.WriteLine("{0} and {1} like your post", names[0], names[1]);
-            else if (names.Count == 1)
-                Console.WriteLine("{0} likes your post.", names[0]);
-            else 
-                Console.WriteLine( "nobody like you!");
-                    
+
 
         }
     }
