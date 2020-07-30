@@ -12,30 +12,22 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var numbers = new List<int>();
+            string[] elements;
             while (true)
             {
-                Console.WriteLine("Enter Number:");
+                Console.WriteLine("Enter a list");
                 var input = Console.ReadLine();
-                if (input.ToLower() == "quit")
-                    break;
-                numbers.Add(Convert.ToInt32(input));
-            }
-            var uniques = new List<int>();
-            foreach (var number in numbers)
-            {
-                if(!uniques.Contains(number))
-                    uniques.Add(number);
+                if (!String.IsNullOrWhiteSpace(input))
+                {
+                    elements = input.Split(',');
+                    if(elements.Length>=5)
+                        break;
+                }
 
+                Console.WriteLine("invalid List");
             }
 
-            Console.WriteLine("uniqe");
-            foreach (var unique in uniques)
-            {
-                Console.WriteLine(unique);
-            }
 
-            
         }
     }
 }
