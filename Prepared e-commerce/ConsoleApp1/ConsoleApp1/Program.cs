@@ -11,33 +11,28 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-         var numbers = new List<int>(){1,2,23,4};
-         numbers.Add(1);
-         numbers.AddRange(new int[3]{3,3,3});
-         foreach (var number in numbers)
-         
+            var names= new List<string>();
+            while (true)
+            {
+                Console.Write("Type a name (or hit ENTER to quit): ");
 
-         Console.WriteLine(number);
+                var input = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(input))
+                    break;
+              
+                //names.Add(input);
+            }
 
-         Console.WriteLine();
-         Console.WriteLine(numbers.IndexOf(1));
-         Console.WriteLine(numbers.LastIndexOf(1));
-         Console.WriteLine(numbers.Count);
+            if (names.Count > 2)
+                Console.WriteLine("{0}, {1} and {2} others like your post", names[0], names[1], names.Count - 2);
+            else if (names.Count == 2)
+                Console.WriteLine("{0} and {1} like your post", names[0], names[1]);
+            else if (names.Count == 1)
+                Console.WriteLine("{0} likes your post.", names[0]);
+            else 
+                Console.WriteLine( "nobody like you!");
+                    
 
-         for (var index = 0; index < numbers.Count; index++)
-         {
-             var number = numbers[index];
-             if (number == 1)
-             {
-                 numbers.Remove(number);
-             }
-         }
-
-         foreach (var number in numbers)
-            Console.WriteLine(number);
-numbers.Clear();
-Console.WriteLine(numbers.Count);
         }
-
     }
 }
