@@ -7,18 +7,17 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-           var dateTime = new DateTime(2015,1,1);
-           var now = DateTime.Now;
-           var today = DateTime.Today;
-           
-           Console.WriteLine("hi"+now.Hour);
-           var yesterday = now.AddDays(-1);
-           Console.WriteLine(now.ToLongDateString());
-           Console.WriteLine(now.ToShortDateString());
-           Console.WriteLine(now.ToLongTimeString());
-           Console.WriteLine(now.ToShortTimeString());
-           Console.WriteLine(now.ToString());
-           Console.WriteLine(now.ToString("yyyy-MM-dd HH:mm"));
+            var timeSpan=new TimeSpan(1,2,3);
+            var timeSpan1=new TimeSpan(1,2,3);
+            var timeSpan2=TimeSpan.FromHours(1);
+var start =DateTime.Now;
+var end =DateTime.Now.AddMinutes(2);
+var duration=end-start;
+System.Console.WriteLine( timeSpan.Minutes);
+System.Console.WriteLine(timeSpan.TotalMinutes);
+System.Console.WriteLine(timeSpan.Add(TimeSpan.FromMinutes(8)));
+System.Console.WriteLine(timeSpan.ToString());
+System.Console.WriteLine( TimeSpan.Parse("01:02:03"));
         }
     }
 }
