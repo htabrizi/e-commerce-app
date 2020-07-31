@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Threading;
-using System.Threading.Tasks.Dataflow;
 
 namespace ConsoleApp1
 {
@@ -11,23 +7,17 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-
-            string[] elements;
-            while (true)
-            {
-                Console.WriteLine("Enter a list");
-                var input = Console.ReadLine();
-                if (!String.IsNullOrWhiteSpace(input))
-                {
-                    elements = input.Split(',');
-                    if(elements.Length>=5)
-                        break;
-                }
-
-                Console.WriteLine("invalid List");
-            }
-
-
+           var dateTime = new DateTime(2015,1,1);
+           var now = DateTime.Now;
+           var today = DateTime.Today;
+           
+           Console.WriteLine("hi"+now.Hour);
+           var yesterday = now.AddDays(-1);
+           Console.WriteLine(now.ToLongDateString());
+           Console.WriteLine(now.ToShortDateString());
+           Console.WriteLine(now.ToLongTimeString());
+           Console.WriteLine(now.ToShortTimeString());
+           Console.WriteLine(now.ToString());
         }
     }
 }
